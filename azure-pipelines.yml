@@ -6,7 +6,12 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: |
-    echo "Pipeline is alive"
-    echo "Branch: $(Build.SourceBranch)"
-  displayName: 'Sanity check'
+- task: AzureCLI@2
+  displayName: 'Terraform init & plan'
+  inputs:
+    azureSubscription: 'sc-practice'
+    scriptType: bash
+    scriptLocation: inlineScript
+    inlineScript: |
+      terraform init
+      terraform plan
