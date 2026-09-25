@@ -2,22 +2,21 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 3.90"
+      version = "~> 4.0"
     }
   }
   backend "azurerm" {
-  resource_group_name  = "rg-tfstate"
-  storage_account_name = "sttfstatexpf001"
-  container_name       = "tfstate"
-  key                  = "practice.tfstate"
-  use_azuread_auth     = true
-  use_oidc             = true
-}
+    resource_group_name  = "rg-tfstate"
+    storage_account_name = "sttfstatexpf001"
+    container_name       = "tfstate"
+    key                  = "practice.tfstate"
+    use_azuread_auth     = true
+    use_oidc             = true
+  }
 }
 
 provider "azurerm" {
   features {}
-  resource_provider_registrations = "none"
 }
 
 resource "azurerm_resource_group" "practice" {
