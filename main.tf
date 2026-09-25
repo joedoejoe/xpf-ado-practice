@@ -6,11 +6,12 @@ terraform {
     }
   }
   backend "azurerm" {
-  resource_group_name  = "rg-tfstate"
-  storage_account_name = "sttfstatexpf001"
-  container_name       = "tfstate"
-  key                  = "practice.tfstate"
-  use_azuread_auth     = true
+    resource_group_name  = "rg-tfstate"
+    storage_account_name = "sttfstatexpf001"
+    container_name       = "tfstate"
+    key                  = "practice.tfstate"
+    use_azuread_auth     = true
+  }
 }
 
 provider "azurerm" {
@@ -24,7 +25,7 @@ resource "azurerm_resource_group" "practice" {
 }
 
 resource "azurerm_storage_account" "practice" {
-  name                     = "stxpfpractice001"   # must be globally unique, lowercase, no dashes
+  name                     = "stxpfpractice001" # must be globally unique, lowercase, no dashes
   resource_group_name      = azurerm_resource_group.practice.name
   location                 = azurerm_resource_group.practice.location
   account_tier             = "Standard"
