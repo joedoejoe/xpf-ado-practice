@@ -1,0 +1,12 @@
+trigger:
+  branches:
+    include: [ main ]
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: |
+    echo "Pipeline is alive"
+    echo "Branch: $(Build.SourceBranch)"
+  displayName: 'Sanity check'
